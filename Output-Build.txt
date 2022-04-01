@@ -1,0 +1,5 @@
+﻿Build started...
+1>------ Build started: Project: Ictshop, Configuration: Debug Any CPU ------
+1>E:\download\ictshop_aspnet-update_dathang\ictshop_aspnet-update_dathang\Ictshop\Controllers\HomeController.cs(34,18,34,25): error CS0246: The type or namespace name 'NongSan' could not be found (are you missing a using directive or an assembly reference?)
+1>E:\download\ictshop_aspnet-update_dathang\ictshop_aspnet-update_dathang\Ictshop\Controllers\HomeController.cs(34,34,34,36): error CS0103: The name 'db' does not exist in the current context
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

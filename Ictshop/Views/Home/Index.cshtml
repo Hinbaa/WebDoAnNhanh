@@ -1,0 +1,58 @@
+﻿
+
+@{ ViewBag.Title = "RAAR FOODY"; }
+
+
+
+<br />
+<div class="row">
+    <div class="col-md-8">
+        @Html.Action("SlidePartial", "Home")
+    </div>
+    <div class="col-md-4">
+        <img src="~/HinhanhSP/h1.png" class="img-responsive" alt="" />
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<div>
+    <img class="img-responsive" src="~/HinhanhSP/dai1.png" />
+</div>
+<br />
+<div class="spnoibat">
+    <div class="row">
+
+        <h3> SẢN PHẨM NỔI BẬT</h3>
+        <div>
+
+            <marquee id="marq" scrollamount="5" direction="thwart" loop="50" scrolldelay="0" onmouseover="this.stop()" onmouseout="this.start()">
+                <a href=""><img src="~/HinhanhSP/NB1.jpg" title="1" width="300" height="300" /> </a>
+                <a href=""><img src="~/HinhanhSP/NB2.jpg" title="2" width="300" height="300" /> </a>
+                <a href=""><img src="~/HinhanhSP/NB3.jpg" title="3" width="300" height="300" /> </a>
+                <a href=""><img src="~/HinhanhSP/NB4.jpg" title="4" width="300" height="300" /> </a>
+                <a href=""><img src="~/HinhanhSP/NB5.jpg" title="5" width="300" height="300" /> </a>
+            </marquee>
+        </div>
+
+    </div>
+</div>
+<div class="danhmuc">
+    @Html.Action("DanhmucPartial", "Danhmuc")
+</div>
+<div class="dt">
+
+    @Html.Action("dtiphonePartial", "Sanpham")
+</div>
+<div class="dt">
+
+    @Html.Action("dtsamsungpartial", "Sanpham")
+</div>
+
+<div class="dt">
+
+    @Html.Action("dtxiaomipartial", "Sanpham")
+</div>
+<div class="dt">
+
+    @Html.Action("dtbphonepartial", "Sanpham")
+</div>
+

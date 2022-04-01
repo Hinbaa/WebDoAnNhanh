@@ -1,0 +1,116 @@
+﻿@using Ictshop.Models
+@model Sanpham
+
+
+@{ ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<br />
+
+@{ var u = Session["use"] as Ictshop.Models.Nguoidung; }
+
+<CENTER>
+    <div>
+        <h2>CHI TIẾT SẢN PHẨM</h2>
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="thumbnail">
+                    <img src="@Url.Content("~/HinhanhSP/" +@Model.Anhbia)" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <p>
+                    <h2> @Model.Tensp</h2>
+                    <h3 style="color:red">Giá: @Model.Giatien</h3>
+                </p>
+                <p>
+                    <h4>@Model.NguyenLieu </h4> 
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div>
+                @Model.Mota
+            </div>
+        </div>
+        <br />
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = Model.Masp, @strURL = Request.Url.ToString() }))
+        {
+            <input type="submit" value="Yêu Thích" id="bgnGioHang" />}
+
+
+
+
+    </div>
+</CENTER>
+
+
+<h1>BÌNH LUẬN</h1>
+
+@if (u != null)
+{
+    <div>
+        @foreach (var item in @ViewBag.dsCMT)
+        {
+            <br />
+            if (item.MaSP == Model.Masp)
+            {
+                <b>@item.TenNguoiDung</b>
+                @item.NgayDang
+                if (u.MaNguoiDung.Equals(item.MaNguoiDung))
+                {
+
+                    <a href="@Url.Action("XoaBL", "Comments", new { id = item.MaBL })">Xóa</a>
+                };
+                <br />
+
+                @Html.Raw(Html.Encode(item.NDBinhLuan).Replace("\n", "<br />"))
+            }
+
+        }
+    </div>
+
+    using (Html.BeginForm("Create", "Comments"))
+    {
+
+
+        @Html.AntiForgeryToken()
+        <div class="CMT">
+            <hr />
+            <label for="cmt" style="margin-right: 5px;">@u.Hoten</label>
+            <form class="form-inline" action="">
+
+                <input type="text" class="form-control" id="Masp" name="Masp" style="margin-right: 5px;display:none;" value="@Model.Masp">
+                <input type="text" class="form-control" id="MaNguoiDung" name="MaNguoiDung" style="margin-right: 5px;display:none;" value="@u.MaNguoiDung">
+                <input type="text" class="form-control" id="TenNguoiDung" name="TenNguoiDung" style="margin-right: 5px;display:none;" value="@u.Hoten">
+                <textarea class="form-control text-box single-line" placeholder="Bình luận ..." id="NDBinhLuan" name="NDBinhLuan" type="text" value=""></textarea>
+
+                <button class="btn btn-primary" style="margin-top:5px;margin-left:95.5%">Gửi</button>
+            </form>
+        </div>
+    }
+
+}
+else
+{
+    <div>
+        @foreach (var item in @ViewBag.dsCMT)
+        {
+            <br />
+            if (item.MaSP == Model.Masp)
+            {
+                <b>@item.TenNguoiDung</b>
+                @item.NgayDang
+               
+                <br />
+
+                @Html.Raw(Html.Encode(item.NDBinhLuan).Replace("\n", "<br />"))
+            }
+
+        }
+    </div>
+
+    <i style="color:#fd9f26;font-size:16px;padding-left:10px">
+        [Bạn phải đăng nhập mới có thế bình luận.]
+    </i>
+}
